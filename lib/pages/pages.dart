@@ -1,0 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:supercharged/supercharged.dart';
+part 'login.dart';
+part 'navigasi.dart';
+part 'inventory.dart';
+part 'history.dart';
+part 'setting.dart';
+part 'inventaris_detail.dart';
+part 'add_item.dart';

@@ -11,19 +11,6 @@ class _SignInPageState extends State<SignInPage> {
   final email = TextEditingController(text: 'WKWK@');
   final pass = TextEditingController(text: 'WKWK');
   final _formState = GlobalKey<FormState>();
-  final LinearGradient _gradient = LinearGradient(
-    colors: [
-      '94783E'.toColor(),
-      'F3EDA6'.toColor(),
-      'F8FAE5'.toColor(),
-      'FFE2BE'.toColor(),
-      'D5BE88'.toColor(),
-      'F8FAE5'.toColor(),
-      'D5BE88'.toColor(),
-    ],
-    begin: Alignment.topRight,
-    end: Alignment.centerLeft,
-  );
   bool _obsecureText = true;
   bool isLoading = false;
 
@@ -173,7 +160,7 @@ class _SignInPageState extends State<SignInPage> {
                   //       showNotifikasi(context, e.message.toString());
                   //     }
                   //   }
-                    Get.to(navigasi());
+                    Get.off(navigasi());
                   } else {}
                 },
                 child: Container(

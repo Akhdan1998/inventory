@@ -24,7 +24,9 @@ class _inventarisState extends State<inventaris> {
             end: Alignment.bottomLeft,
           ),
         ),
-        height: MediaQuery.of(context).size.height - 144,
+        height: (Platform.isAndroid)
+            ? MediaQuery.of(context).size.height - 144
+            : MediaQuery.of(context).size.height - 209,
         alignment: Alignment.center,
         child: Container(
           height: MediaQuery.of(context).size.height,

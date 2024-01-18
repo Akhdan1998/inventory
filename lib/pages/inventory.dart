@@ -13,15 +13,7 @@ class _inventoryState extends State<inventory> {
   int _selectedIndex = 0;
   PageController controller = PageController();
   int pageChanged = 0;
-
-  void _navigasiBottomBar(int index) {
-    setState(() {
-      _selectedIndex = index;
-
-      controller.animateToPage(_selectedIndex,
-          duration: Duration(milliseconds: 300), curve: Curves.easeInOutCirc);
-    });
-  }
+  String language = '1';
 
   @override
   void initState() {
@@ -121,14 +113,24 @@ class _inventoryState extends State<inventory> {
                             curve: Curves.bounceInOut);
                       },
                       child: Container(
+                        decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                          ),
+                            color: (selectedButton == '1')
+                                ? '1F4247'.toColor()
+                                : Colors.transparent,
+                          ),
                         alignment: Alignment.center,
-                        padding: EdgeInsets.only(top: 5, bottom: 5),
-                        color: Colors.transparent,
+                        padding: EdgeInsets.all(10),
                         child: Text(
                           'Inventory',
                           style: GoogleFonts.poppins().copyWith(
-                            color: '1F4247'.toColor(),
-                          ),
+                              color: (selectedButton == '1')
+                                  ? Colors.white
+                                  : '1F4247'.toColor(),
+                            ),
                         ),
                       ),
                     ),
@@ -149,12 +151,22 @@ class _inventoryState extends State<inventory> {
                       },
                       child: Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.only(top: 5, bottom: 5),
-                        color: Colors.transparent,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                          ),
+                          color: (selectedButton == '2')
+                              ? '1F4247'.toColor()
+                              : Colors.transparent,
+                        ),
+                        padding: EdgeInsets.all(10),
                         child: Text(
                           'Add items',
                           style: GoogleFonts.poppins().copyWith(
-                            color: '1F4247'.toColor(),
+                            color: (selectedButton == '2')
+                                ? Colors.white
+                                : '1F4247'.toColor(),
                           ),
                         ),
                       ),

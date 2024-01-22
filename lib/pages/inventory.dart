@@ -177,6 +177,7 @@ class _inventoryState extends State<inventory> {
             Positioned(
               top: 50,right: 0, left: 0,
               child: Container(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 height: MediaQuery.of(context).size.height,
                 child: PageView(
                   physics: NeverScrollableScrollPhysics(),

@@ -8,11 +8,51 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  final email = TextEditingController(text: 'WKWK@');
-  final pass = TextEditingController(text: 'WKWK');
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final email = TextEditingController(text: 'admin@gmail.com');
+  final pass = TextEditingController(text: 'adminadmin');
   final _formState = GlobalKey<FormState>();
   bool _obsecureText = true;
   bool isLoading = false;
+
+  void _login() async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email.text,
+        password: pass.text,
+      );
+      // Jika berhasil login, Anda dapat melakukan navigasi atau tindakan lainnya di sini
+      print("Login berhasil: ${userCredential.user?.email}");
+      // SharedPreferences prefs = await SharedPreferences.getInstance();
+      // prefs.setString('user_id', userCredential.user?.uid ?? '');
+      // prefs.setString('user_email', userCredential.user?.email ?? '');
+      Get.off(navigasi());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        // Menampilkan notifikasi jika email atau password tidak valid
+        Fluttertoast.showToast(
+            msg: "Incorrect email or password",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 5,
+            backgroundColor: '4599DB'.toColor(),
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      } else {
+        // Menampilkan notifikasi untuk kesalahan lainnya
+        Fluttertoast.showToast(
+            msg: "The email and password combination is incorrect",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 5,
+            backgroundColor: '4599DB'.toColor(),
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,20 +187,10 @@ class _SignInPageState extends State<SignInPage> {
               GestureDetector(
                 onTap: () async {
                   if (_formState.currentState!.validate()) {
-                    // _formState.currentState!.save();
                     setState(() {
                       isLoading = true;
                     });
-                  //   if (FirebaseAuth.instance.currentUser == null) {
-                  //     try {
-                  //       await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  //         email: email.text, password: pass.text,
-                  //       );
-                  //     } on FirebaseAuthException catch (e) {
-                  //       showNotifikasi(context, e.message.toString());
-                  //     }
-                  //   }
-                    Get.off(navigasi());
+                    _login();
                   } else {}
                 },
                 child: Container(
@@ -204,5 +234,8 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
+  }
+  void showNotifikasi(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message.toString())));
   }
 }

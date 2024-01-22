@@ -21,11 +21,14 @@ class _tambahState extends State<tambah> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference users = firestore.collection('users');
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Form(
         key: _formState,
         child: Container(
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: EdgeInsets.only(left: 20, right: 20, bottom: MediaQuery.of(context).viewInsets.bottom),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -42,9 +45,10 @@ class _tambahState extends State<tambah> {
               : MediaQuery.of(context).size.height - 209,
           alignment: Alignment.center,
           child: SingleChildScrollView(
+            reverse: false,
             scrollDirection: Axis.vertical,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: 20),
@@ -459,19 +463,20 @@ class _tambahState extends State<tambah> {
                 GestureDetector(
                   onTap: () async {
                     if (_formState.currentState!.validate()) {
-                      // _formState.currentState!.save();
                       setState(() {
                         isLoading = true;
                       });
-                      //   if (FirebaseAuth.instance.currentUser == null) {
-                      //     try {
-                      //       await FirebaseAuth.instance.signInWithEmailAndPassword(
-                      //         email: email.text, password: pass.text,
-                      //       );
-                      //     } on FirebaseAuthException catch (e) {
-                      //       showNotifikasi(context, e.message.toString());
-                      //     }
-                      //   }
+                      users.add({
+                        'nama': nama.text,
+                        'kode': kode.text,
+                        'tanggal': tanggal.text,
+                        'nilaiAwal': nilaiAwal.text,
+                        'pemakaian': pemakaian.text,
+                        'umurTeknis': umurTeknis.text,
+                        'umurFungsional': umurFungsional.text,
+                        'penyusutan': penyusutan.text,
+                        'sisiNilai': sisiNilai.text,
+                      });
                       nama.text = '';
                       kode.text = '';
                       tanggal.text = '';

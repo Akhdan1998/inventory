@@ -53,6 +53,7 @@ class _tambahState extends State<tambah> {
               children: [
                 SizedBox(height: 20),
                 TextFormField(
+                  textCapitalization: TextCapitalization.sentences,
                   keyboardType: TextInputType.text,
                   style: TextStyle(
                     color: 'FFFFFF'.toColor(),
@@ -203,7 +204,7 @@ class _tambahState extends State<tambah> {
                 ),
                 SizedBox(height: 15),
                 TextFormField(
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.number,
                   style: TextStyle(
                     color: 'FFFFFF'.toColor(),
                   ),
@@ -389,7 +390,7 @@ class _tambahState extends State<tambah> {
                   },
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
+                      borderRadius: BorderRadius.circular(9),
                       borderSide: BorderSide(
                         width: 1,
                         color: Colors.transparent,

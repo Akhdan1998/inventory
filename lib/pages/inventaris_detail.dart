@@ -8,11 +8,22 @@ class inventaris extends StatefulWidget {
 }
 
 class _inventarisState extends State<inventaris> {
+  Future<void> getData() async {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    QuerySnapshot querySnapshot = await users.get();
+
+    for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+      print('ID: ${documentSnapshot.id}, Data: ${documentSnapshot.data()}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference users = firestore.collection('users');
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(left: 20, right: 20),
+        padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -30,427 +41,283 @@ class _inventarisState extends State<inventaris> {
         alignment: Alignment.center,
         child: Container(
           height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.30),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Item',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Item code',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Purchase date',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Initial Value',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Usage (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Technical Age (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Functional Age (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Annual Depreciation',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Remaining Value',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
+          child: StreamBuilder<QuerySnapshot>(
+              stream: users.snapshots(),
+              builder: (_, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.data!.docs.isNotEmpty) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: snapshot.data!.docs
+                            .map(
+                              (e) => Column(
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    padding: EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.30),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Item',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Item code',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Purchase date',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Initial Value',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Usage (Years)',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Technical Age (Years)',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Functional Age (Years)',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Annual Depreciation',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Remaining Value',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              ':',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              e.get('nama') ?? '-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              e.get('kode') ?? '-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              e.get('tanggal') ?? '-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Rp. ' + e.get('nilaiAwal') + ' ,-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              e.get('pemakaian') ?? '-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              e.get('umurTeknis') ?? '-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              e.get('umurFungsional') ?? '-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Rp. ' + e.get('penyusutan') + ' ,-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Rp. ' + e.get('sisiNilai') + ' ,-',
+                                              style: GoogleFonts.poppins()
+                                                  .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                            .toList(),
                       ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('HDD',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('HDD-01',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('01/01/2023',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 1.500.000',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('1',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('10',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('8',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 187.500',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 1.312.500',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 15),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.30),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Item',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Item code',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Purchase date',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Initial Value',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Usage (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Technical Age (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Functional Age (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Annual Depreciation',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Remaining Value',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Mouse',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Mouse-01',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('01/01/2023',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 350.000',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('1',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('2',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('1',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 350.000',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 0',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 15),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.30),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Item',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Item code',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Purchase date',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Initial Value',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Usage (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Technical Age (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Functional Age (Years)',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Annual Depreciation',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Remaining Value',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text(':',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Server',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Server-01',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('10/01/2023',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 25.500.000',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('4',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('15',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('10',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 2.550.000',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                          Text('Rp. 15.300.000',
-                            style: GoogleFonts.poppins().copyWith(
-                              color: Colors.white, fontSize: 13,
-                            ),),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-              ],
-            ),
-          ),
+                    );
+                  } else {
+                    return Container();
+                  }
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  );
+                }
+              }),
         ),
       ),
     );

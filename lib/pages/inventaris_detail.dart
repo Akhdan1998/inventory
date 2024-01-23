@@ -91,47 +91,7 @@ class _inventarisState extends State<inventaris> {
                                               ),
                                             ),
                                             Text(
-                                              'Initial Value',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Usage (Years)',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Technical Age (Years)',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Functional Age (Years)',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Annual Depreciation',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Remaining Value',
+                                              'First stock',
                                               style: GoogleFonts.poppins()
                                                   .copyWith(
                                                 color: Colors.white,
@@ -145,46 +105,6 @@ class _inventarisState extends State<inventaris> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              ':',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              ':',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              ':',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              ':',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              ':',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
                                             Text(
                                               ':',
                                               style: GoogleFonts.poppins()
@@ -249,58 +169,65 @@ class _inventarisState extends State<inventaris> {
                                               ),
                                             ),
                                             Text(
-                                              'Rp. ' + e.get('nilaiAwal') + ' ,-',
+                                              e.get('nilaiAwal'),
                                               style: GoogleFonts.poppins()
                                                   .copyWith(
                                                 color: Colors.white,
                                                 fontSize: 13,
                                               ),
                                             ),
-                                            Text(
-                                              e.get('pemakaian') ?? '-',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              e.get('umurTeknis') ?? '-',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              e.get('umurFungsional') ?? '-',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Rp. ' + e.get('penyusutan') + ' ,-',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Rp. ' + e.get('sisiNilai') + ' ,-',
-                                              style: GoogleFonts.poppins()
-                                                  .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
-                                            ),
+                                            // Text(
+                                            //   e.get('pemakaian') ?? '-',
+                                            //   style: GoogleFonts.poppins()
+                                            //       .copyWith(
+                                            //     color: Colors.white,
+                                            //     fontSize: 13,
+                                            //   ),
+                                            // ),
+                                            // Text(
+                                            //   e.get('umurTeknis') ?? '-',
+                                            //   style: GoogleFonts.poppins()
+                                            //       .copyWith(
+                                            //     color: Colors.white,
+                                            //     fontSize: 13,
+                                            //   ),
+                                            // ),
+                                            // Text(
+                                            //   e.get('umurFungsional') ?? '-',
+                                            //   style: GoogleFonts.poppins()
+                                            //       .copyWith(
+                                            //     color: Colors.white,
+                                            //     fontSize: 13,
+                                            //   ),
+                                            // ),
+                                            // Text(
+                                            //   NumberFormat.currency(
+                                            //       locale: 'id', decimalDigits: 0)
+                                            //       .format(e.get('penyusutan')),
+                                            //   // 'Rp. ' + e.get('penyusutan') + ' ,-',
+                                            //   style: GoogleFonts.poppins()
+                                            //       .copyWith(
+                                            //     color: Colors.white,
+                                            //     fontSize: 13,
+                                            //   ),
+                                            // ),
+                                            // Text(
+                                            //   NumberFormat.currency(
+                                            //       locale: 'id', decimalDigits: 0)
+                                            //       .format(e.get('sisiNilai')),
+                                            //   // 'Rp. ' + e.get('sisiNilai') + ' ,-',
+                                            //   style: GoogleFonts.poppins()
+                                            //       .copyWith(
+                                            //     color: Colors.white,
+                                            //     fontSize: 13,
+                                            //   ),
+                                            // ),
                                           ],
                                         ),
                                       ],
                                     ),
                                   ),
+                                  SizedBox(height: 15),
                                 ],
                               ),
                             )

@@ -43,7 +43,7 @@ class _tambahState extends State<tambah> {
           height: (Platform.isAndroid)
               ? MediaQuery.of(context).size.height - 144
               : MediaQuery.of(context).size.height - 209,
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           child: SingleChildScrollView(
             reverse: false,
             scrollDirection: Axis.vertical,
@@ -212,7 +212,7 @@ class _tambahState extends State<tambah> {
                   controller: nilaiAwal,
                   validator: (value) {
                     if (value == '') {
-                      return 'initial value cannot be empty!!';
+                      return 'Initial value cannot be empty!!';
                     }
                     return null;
                   },
@@ -239,228 +239,228 @@ class _tambahState extends State<tambah> {
                       fontWeight: FontWeight.w300,
                       color: Colors.grey,
                     ),
-                    hintText: 'Enter initial value',
+                    hintText: 'Enter initial stock',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(9),
                     ),
                   ),
                 ),
                 SizedBox(height: 15),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(
-                    color: 'FFFFFF'.toColor(),
-                  ),
-                  cursorColor: 'FFFFFF'.toColor(),
-                  controller: pemakaian,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'Usage(Years) cannot be empty!!';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    fillColor: Colors.grey.withOpacity(0.10),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                    hintStyle: GoogleFonts.poppins().copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.grey,
-                    ),
-                    hintText: 'Enter Usage(Years)',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(
-                    color: 'FFFFFF'.toColor(),
-                  ),
-                  cursorColor: 'FFFFFF'.toColor(),
-                  controller: umurTeknis,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'Technical age(Years) cannot be empty!!';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    fillColor: Colors.grey.withOpacity(0.10),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                    hintStyle: GoogleFonts.poppins().copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.grey,
-                    ),
-                    hintText: 'Enter Technical age(Years)',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(
-                    color: 'FFFFFF'.toColor(),
-                  ),
-                  cursorColor: 'FFFFFF'.toColor(),
-                  controller: umurFungsional,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'Functional age(Years) cannot be empty!!';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    fillColor: Colors.grey.withOpacity(0.10),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                    hintStyle: GoogleFonts.poppins().copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.grey,
-                    ),
-                    hintText: 'Enter Functional age(Years)',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(
-                    color: 'FFFFFF'.toColor(),
-                  ),
-                  cursorColor: 'FFFFFF'.toColor(),
-                  controller: penyusutan,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'Annual depreciation cannot be empty!!';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    fillColor: Colors.grey.withOpacity(0.10),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                    hintStyle: GoogleFonts.poppins().copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.grey,
-                    ),
-                    hintText: 'Enter Annual depreciation',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(
-                    color: 'FFFFFF'.toColor(),
-                  ),
-                  cursorColor: 'FFFFFF'.toColor(),
-                  controller: sisiNilai,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'Value side cannot be empty!!';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    fillColor: Colors.grey.withOpacity(0.10),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(9)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                    hintStyle: GoogleFonts.poppins().copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.grey,
-                    ),
-                    hintText: 'Enter Value side',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
+                // TextFormField(
+                //   keyboardType: TextInputType.number,
+                //   style: TextStyle(
+                //     color: 'FFFFFF'.toColor(),
+                //   ),
+                //   cursorColor: 'FFFFFF'.toColor(),
+                //   controller: pemakaian,
+                //   validator: (value) {
+                //     if (value == '') {
+                //       return 'Usage(Years) cannot be empty!!';
+                //     }
+                //     return null;
+                //   },
+                //   decoration: InputDecoration(
+                //     enabledBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     fillColor: Colors.grey.withOpacity(0.10),
+                //     filled: true,
+                //     focusedBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                //     hintStyle: GoogleFonts.poppins().copyWith(
+                //       fontSize: 12,
+                //       fontWeight: FontWeight.w300,
+                //       color: Colors.grey,
+                //     ),
+                //     hintText: 'Enter Usage(Years)',
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(9),
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 15),
+                // TextFormField(
+                //   keyboardType: TextInputType.number,
+                //   style: TextStyle(
+                //     color: 'FFFFFF'.toColor(),
+                //   ),
+                //   cursorColor: 'FFFFFF'.toColor(),
+                //   controller: umurTeknis,
+                //   validator: (value) {
+                //     if (value == '') {
+                //       return 'Technical age(Years) cannot be empty!!';
+                //     }
+                //     return null;
+                //   },
+                //   decoration: InputDecoration(
+                //     enabledBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     fillColor: Colors.grey.withOpacity(0.10),
+                //     filled: true,
+                //     focusedBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                //     hintStyle: GoogleFonts.poppins().copyWith(
+                //       fontSize: 12,
+                //       fontWeight: FontWeight.w300,
+                //       color: Colors.grey,
+                //     ),
+                //     hintText: 'Enter Technical age(Years)',
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(9),
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 15),
+                // TextFormField(
+                //   keyboardType: TextInputType.number,
+                //   style: TextStyle(
+                //     color: 'FFFFFF'.toColor(),
+                //   ),
+                //   cursorColor: 'FFFFFF'.toColor(),
+                //   controller: umurFungsional,
+                //   validator: (value) {
+                //     if (value == '') {
+                //       return 'Functional age(Years) cannot be empty!!';
+                //     }
+                //     return null;
+                //   },
+                //   decoration: InputDecoration(
+                //     enabledBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     fillColor: Colors.grey.withOpacity(0.10),
+                //     filled: true,
+                //     focusedBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                //     hintStyle: GoogleFonts.poppins().copyWith(
+                //       fontSize: 12,
+                //       fontWeight: FontWeight.w300,
+                //       color: Colors.grey,
+                //     ),
+                //     hintText: 'Enter Functional age(Years)',
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(9),
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 15),
+                // TextFormField(
+                //   keyboardType: TextInputType.number,
+                //   style: TextStyle(
+                //     color: 'FFFFFF'.toColor(),
+                //   ),
+                //   cursorColor: 'FFFFFF'.toColor(),
+                //   controller: penyusutan,
+                //   validator: (value) {
+                //     if (value == '') {
+                //       return 'Annual depreciation cannot be empty!!';
+                //     }
+                //     return null;
+                //   },
+                //   decoration: InputDecoration(
+                //     enabledBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(9),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     fillColor: Colors.grey.withOpacity(0.10),
+                //     filled: true,
+                //     focusedBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                //     hintStyle: GoogleFonts.poppins().copyWith(
+                //       fontSize: 12,
+                //       fontWeight: FontWeight.w300,
+                //       color: Colors.grey,
+                //     ),
+                //     hintText: 'Enter Annual depreciation',
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(9),
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 15),
+                // TextFormField(
+                //   keyboardType: TextInputType.number,
+                //   style: TextStyle(
+                //     color: 'FFFFFF'.toColor(),
+                //   ),
+                //   cursorColor: 'FFFFFF'.toColor(),
+                //   controller: sisiNilai,
+                //   validator: (value) {
+                //     if (value == '') {
+                //       return 'Value side cannot be empty!!';
+                //     }
+                //     return null;
+                //   },
+                //   decoration: InputDecoration(
+                //     enabledBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     fillColor: Colors.grey.withOpacity(0.10),
+                //     filled: true,
+                //     focusedBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(9)),
+                //       borderSide: BorderSide(
+                //         width: 1,
+                //         color: Colors.transparent,
+                //       ),
+                //     ),
+                //     contentPadding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                //     hintStyle: GoogleFonts.poppins().copyWith(
+                //       fontSize: 12,
+                //       fontWeight: FontWeight.w300,
+                //       color: Colors.grey,
+                //     ),
+                //     hintText: 'Enter Value side',
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(9),
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 15),
                 GestureDetector(
                   onTap: () async {
                     if (_formState.currentState!.validate()) {
@@ -472,11 +472,11 @@ class _tambahState extends State<tambah> {
                         'kode': kode.text,
                         'tanggal': tanggal.text,
                         'nilaiAwal': nilaiAwal.text,
-                        'pemakaian': pemakaian.text,
-                        'umurTeknis': umurTeknis.text,
-                        'umurFungsional': umurFungsional.text,
-                        'penyusutan': penyusutan.text,
-                        'sisiNilai': sisiNilai.text,
+                        // 'pemakaian': pemakaian.text,
+                        // 'umurTeknis': umurTeknis.text,
+                        // 'umurFungsional': umurFungsional.text,
+                        // 'penyusutan': penyusutanValue,
+                        // 'sisiNilai': sisiNilaiValue,
                       });
                       nama.text = '';
                       kode.text = '';

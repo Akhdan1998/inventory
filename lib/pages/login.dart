@@ -21,11 +21,7 @@ class _SignInPageState extends State<SignInPage> {
         email: email.text,
         password: pass.text,
       );
-      // Jika berhasil login, Anda dapat melakukan navigasi atau tindakan lainnya di sini
       print("Login berhasil: ${userCredential.user?.email}");
-      // SharedPreferences prefs = await SharedPreferences.getInstance();
-      // prefs.setString('user_id', userCredential.user?.uid ?? '');
-      // prefs.setString('user_email', userCredential.user?.email ?? '');
       Get.off(navigasi());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
@@ -184,7 +180,8 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ),
               SizedBox(height: 25),
-              GestureDetector(
+          (isLoading == false)
+              ? GestureDetector(
                 onTap: () async {
                   if (_formState.currentState!.validate()) {
                     setState(() {
@@ -208,27 +205,25 @@ class _SignInPageState extends State<SignInPage> {
                       end: Alignment.centerLeft,
                     ),
                   ),
-                  child: (isLoading = true)
-                      ? Text(
+                  child: Text(
                     'Login',
                     style: GoogleFonts.poppins().copyWith(
                       fontSize: 15,
                       color: 'FFFFFF'.toColor(),
                       fontWeight: FontWeight.bold,
                     ),
-                  )
-                      : Center(
-                    child: SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2.5,
-                        color: 'FFFFFF'.toColor(),
-                      ),
-                    ),
                   ),
                 ),
+              )
+              : Center(
+            child: SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                color: 'FFFFFF'.toColor(),
               ),
+            ),
+          ),
             ],
           ),
         ),

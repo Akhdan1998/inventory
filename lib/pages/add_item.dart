@@ -12,11 +12,6 @@ class _tambahState extends State<tambah> {
   final kode = TextEditingController();
   final tanggal = TextEditingController();
   final nilaiAwal = TextEditingController();
-  final pemakaian = TextEditingController();
-  final umurTeknis = TextEditingController();
-  final umurFungsional = TextEditingController();
-  final penyusutan = TextEditingController();
-  final sisiNilai = TextEditingController();
   final _formState = GlobalKey<FormState>();
   bool isLoading = false;
   @override
@@ -472,25 +467,15 @@ class _tambahState extends State<tambah> {
                         'kode': kode.text,
                         'tanggal': tanggal.text,
                         'nilaiAwal': nilaiAwal.text,
-                        // 'pemakaian': pemakaian.text,
-                        // 'umurTeknis': umurTeknis.text,
-                        // 'umurFungsional': umurFungsional.text,
-                        // 'penyusutan': penyusutanValue,
-                        // 'sisiNilai': sisiNilaiValue,
                       });
                       nama.text = '';
                       kode.text = '';
                       tanggal.text = '';
                       nilaiAwal.text = '';
-                      pemakaian.text = '';
-                      umurTeknis.text = '';
-                      umurFungsional.text = '';
-                      penyusutan.text = '';
-                      sisiNilai.text = '';
                       Fluttertoast.showToast(
                           msg: "The item data has been successfully saved",
                           toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.TOP,
+                          gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 5,
                           backgroundColor: '4599DB'.toColor(),
                           textColor: Colors.white,
